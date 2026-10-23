@@ -1,0 +1,13 @@
+# ESP-IDF
+build/
+managed_components/
+dependencies.lock
+sdkconfig.old
+sdkconfig.ci
+*.bin
+*.elf
+*.map
+
+# Editor / OS
+.DS_Store
+Thumbs.db

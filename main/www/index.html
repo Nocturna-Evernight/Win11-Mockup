@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32-S3 Win11 WebOS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="desktop" id="desktop">
+        <div class="wallpaper" id="wallpaper"></div>
+        
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <button class="start-button" id="startBtn">
+                    <img src="assets/img/windows-logo.svg" alt="Start" onerror="this.style.display='none'">
+                    <span>Start</span>
+                </button>
+                <div class="taskbar-apps" id="taskbarApps"></div>
+            </div>
+            <div class="taskbar-center">
+                <div class="media-player-mini" id="mediaPlayerMini">
+                    <button class="media-btn" id="mediaPrev" title="Previous">⏮</button>
+                    <button class="media-btn" id="mediaPlay" title="Play/Pause">▶</button>
+                    <button class="media-btn" id="mediaNext" title="Next">⏭</button>
+                    <div class="media-info" id="mediaInfo">
+                        <span class="media-title" id="mediaTitle">No media</span>
+                        <div class="media-progress" id="mediaProgress"><div class="media-progress-bar" id="mediaProgressBar"></div></div>
+                    </div>
+                    <button class="media-btn" id="mediaVolume" title="Volume">🔊</button>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80">
+                </div>
+            </div>
+            <div class="taskbar-right">
+                <div class="taskbar-icons">
+                    <button class="icon-btn" id="wifiBtn" title="Network">📶</button>
+                    <button class="icon-btn" id="bluetoothBtn" title="Bluetooth">🔵</button>
+                    <button class="icon-btn" id="batteryBtn" title="Battery">🔋</button>
+                    <button class="icon-btn" id="volumeBtn" title="Volume">🔊</button>
+                    <button class="icon-btn" id="notificationBtn" title="Notifications">🔔</button>
+                </div>
+                <div class="taskbar-time" id="taskbarTime">12:00 PM</div>
+                <div class="taskbar-date" id="taskbarDate">10/9/2026</div>
+            </div>
+        </div>
+
+        <div class="desktop-icons" id="desktopIcons">
+            <div class="desktop-icon" data-app="file-explorer" title="File Explorer">
+                <div class="icon-img">📁</div>
+                <div class="icon-label">File Explorer</div>
+            </div>
+            <div class="desktop-icon" data-app="settings" title="Settings">
+                <div class="icon-img">⚙️</div>
+                <div class="icon-label">Settings</div>
+            </div>
+            <div class="desktop-icon" data-app="dns-adblock" title="DNS Ad-Blocker">
+                <div class="icon-img">🛡️</div>
+                <div class="icon-label">DNS Ad-Blocker</div>
+            </div>
+            <div class="desktop-icon" data-app="profiles" title="Profiles">
+                <div class="icon-img">👤</div>
+                <div class="icon-label">Profiles</div>
+            </div>
+            <div class="desktop-icon" data-app="terminal" title="Terminal">
+                <div class="icon-img">>_</div>
+                <div class="icon-label">Terminal</div>
+            </div>
+            <div class="desktop-icon" data-app="media-player" title="Media Player">
+                <div class="icon-img">🎵</div>
+                <div class="icon-label">Media Player</div>
+            </div>
+        </div>
+
+        <div class="start-menu" id="startMenu">
+            <div class="start-menu-pinned">
+                <button class="start-menu-pinned-item" data-app="file-explorer">📁 File Explorer</button>
+                <button class="start-menu-pinned-item" data-app="settings">⚙️ Settings</button>
+                <button class="start-menu-pinned-item" data-app="media-player">🎵 Media Player</button>
+                <button class="start-menu-pinned-item" data-app="terminal">>_ Terminal</button>
+            </div>
+            <div class="start-menu-divider"></div>
+            <div class="start-menu-all-apps">
+                <button class="start-menu-item" data-app="dns-adblock">🛡️ DNS Ad-Blocker</button>
+                <button class="start-menu-item" data-app="profiles">👤 User Profiles</button>
+                <button class="start-menu-item" data-app="network">🌐 Network Settings</button>
+                <button class="start-menu-item" data-app="shutdown">⏻ Shutdown</button>
+                <button class="start-menu-item" data-app="restart">🔄 Restart</button>
+            </div>
+            <div class="start-menu-user">
+                <div class="user-avatar">👤</div>
+                <div class="user-info">
+                    <div id="currentUser">Administrator</div>
+                    <div id="currentUserRole" class="user-role">Administrator</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification-center" id="notificationCenter">
+            <div class="notification-header">
+                <span>Notifications</span>
+                <button id="clearNotifications">Clear all</button>
+            </div>
+            <div class="notification-list" id="notificationList">
+                <div class="notification empty">No notifications</div>
+            </div>
+        </div>
+
+        <div class="quick-settings" id="quickSettings">
+            <div class="quick-settings-grid">
+                <button class="quick-toggle active" data-toggle="wifi">📶<br>Wi-Fi</button>
+                <button class="quick-toggle" data-toggle="bluetooth">🔵<br>Bluetooth</button>
+                <button class="quick-toggle" data-toggle="hotspot">📱<br>Hotspot</button>
+                <button class="quick-toggle" data-toggle="airplane">✈️<br>Airplane</button>
+                <button class="quick-toggle" data-toggle="night">🌙<br>Night light</button>
+                <button class="quick-toggle" data-toggle="focus">🎯<br>Focus</button>
+            </div>
+            <div class="quick-settings-bottom">
+                <div class="quick-brightness">
+                    <span>🔆</span>
+                    <input type="range" id="brightnessSlider" min="0" max="100" value="80">
+                </div>
+                <div class="quick-volume">
+                    <span>🔊</span>
+                    <input type="range" id="quickVolumeSlider" min="0" max="100" value="80">
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="window" style="display:none;">
+            <div class="window-header">
+                <span class="window-title" id="windowTitle">Window</span>
+                <div class="window-controls">
+                    <button class="window-control" id="minBtn" title="Minimize">─</button>
+                    <button class="window-control" id="maxBtn" title="Maximize">▢</button>
+                    <button class="window-control close" id="closeBtn" title="Close">✕</button>
+                </div>
+            </div>
+            <div class="window-content" id="windowContent"></div>
+        </div>
+
+        <div class="context-menu" id="contextMenu">
+            <div class="context-menu-item" data-action="refresh">🔄 Refresh</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item" data-action="new-folder">📁 New folder</div>
+            <div class="context-menu-item" data-action="paste">📋 Paste</div>
+            <div class="context-menu-divider"></div>
+            <div class="context-menu-item" data-action="display">🖥️ Display settings</div>
+            <div class="context-menu-item" data-action="personalize">🎨 Personalize</div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

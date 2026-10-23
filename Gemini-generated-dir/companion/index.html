@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ESP32 LAN Browser Companion</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="eyebrow">WINDOWS PC COMPANION</div>
+        <h1>LAN Browser Bridge</h1>
+        <p>Pair this PC with the ESP32 desktop to open and control websites here.</p>
+      </header>
+      <section class="pairing">
+        <div class="label">One-time pairing code</div>
+        <div id="code" class="code">------</div>
+        <div id="addresses" class="addresses">Discovering this PC's LAN address…</div>
+      </section>
+      <section class="status-card">
+        <span id="indicator" class="indicator"></span>
+        <span id="status">Starting local-only signaling service…</span>
+      </section>
+      <section class="notice">
+        <strong>Local network only.</strong>
+        Video and remote input use encrypted WebRTC. Pair only with a trusted device on your Wi-Fi.
+        The code expires after five minutes or when a session ends. Closing this window keeps the bridge
+        running in the notification area; use its tray menu to reopen this panel or quit. Windows Firewall
+        may ask you to allow this app on Private networks; do not allow Public networks.
+      </section>
+      <footer>Port 8765 · No cloud relay · No access to local files or other applications</footer>
+    </main>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

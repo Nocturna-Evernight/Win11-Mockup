@@ -1,0 +1,11 @@
+# Name,     Type, SubType, Offset,   Size,     Flags
+# ESP32-S3 N16R8 (16 MB flash) — dual OTA layout.
+# ota_0 sits exactly where factory did (0x20000, 4 MB).
+# ota_1 takes the first 4 MB of what was storage.
+# storage is shifted to 0x820000 and keeps ~7.875 MB.
+nvs,        data, nvs,     0x9000,   0x6000,
+otadata,    data, ota,     0xf000,   0x2000,
+phy_init,   data, phy,     0x11000,  0x1000,
+ota_0,      app,  ota_0,   0x20000,  0x400000,
+ota_1,      app,  ota_1,   0x420000, 0x400000,
+storage,    data, littlefs, 0x820000, 0x7E0000,

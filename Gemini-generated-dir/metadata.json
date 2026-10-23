@@ -1,0 +1,6 @@
+{
+  "name": "ESP32-S3 Windows 11 WebOS & ESP-IDF Suite",
+  "description": "ESP-IDF firmware and web desktop for ESP32-S3 N16R8 with USB-OTG storage, Octal PSRAM, UAC elevation, and user profiles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

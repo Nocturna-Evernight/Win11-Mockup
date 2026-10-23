@@ -1,0 +1,75 @@
+menu "Win11 WebOS hardware"
+
+config APP_STATUS_LED_ENABLED
+    bool "Enable WS2812 status LED"
+    default y
+    help
+        Use the onboard WS2812-compatible LED for system, OTA, and power status.
+
+config APP_STATUS_LED_GPIO
+    int "Onboard WS2812 RGB data GPIO"
+    range 0 48
+    default 48
+    help
+        GPIO connected to the onboard WS2812-compatible RGB LED. Set this to
+        the board's RGB data pin if it differs from GPIO48.
+
+config APP_STATUS_LED_BRIGHTNESS
+    int "Status LED brightness"
+    range 1 100
+    default 20
+    depends on APP_STATUS_LED_ENABLED
+    help
+        Maximum LED channel brightness as a percentage. Lower values reduce
+        current draw and glare.
+
+config APP_BOOT_SHUTDOWN_ENABLED
+    bool "Enable BOOT-button shutdown preparation"
+    default y
+    help
+        Holding the configured button flushes logs, stops network services,
+        and unmounts USB storage. The board remains powered for external
+        power-cut hardware; this does not turn off the ESP32.
+
+config APP_BOOT_BUTTON_GPIO
+    int "BOOT / shutdown button GPIO"
+    range 0 48
+    default 0
+    depends on APP_BOOT_SHUTDOWN_ENABLED
+    help
+        GPIO connected to the active-low BOOT button. ESP32-S3 development
+        boards normally use GPIO0.
+
+config APP_BOOT_BUTTON_HOLD_MS
+    int "Shutdown button hold time (ms)"
+    range 500 10000
+    default 2500
+    depends on APP_BOOT_SHUTDOWN_ENABLED
+    help
+        Required continuous hold duration before shutdown preparation starts.
+
+config APP_POWER_RESPONSE_DELAY_MS
+    int "Power command response delay (ms)"
+    range 100 5000
+    default 800
+    help
+        Delay after a power API request so its HTTP response can reach the
+        browser before network services are stopped.
+
+config APP_POWER_FLUSH_TIMEOUT_MS
+    int "Maximum log flush wait (ms)"
+    range 500 15000
+    default 5000
+    help
+        Maximum time to drain queued log records before a restart or shutdown
+        preparation is rejected as unsafe.
+
+config APP_OTA_AUTO_REBOOT
+    bool "Automatically reboot after staging an OTA update"
+    default n
+    help
+        Restart after a new image has been written and verified in the
+        inactive OTA partition. When disabled, use the UI or BOOT-button
+        shutdown preparation and restart manually to apply the update.
+
+endmenu

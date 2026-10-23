@@ -1,0 +1,38 @@
+idf_component_register(
+    SRCS 
+        "main.c" 
+        "usb_host_msc.c" 
+        "usb_storage_map.c"
+        "auth_uac.c" 
+        "win11_server.c" 
+        "thermal_monitor.c"
+        "ota_manager.c"
+        "app_platform.c"
+        "dns_adblock.c"
+        "profile_manager.c"
+        "usb_setup.c"
+        "status_indicator.c"
+        "system_control.c"
+    INCLUDE_DIRS "."
+    REQUIRES 
+        usb 
+        fatfs 
+        esp_http_server 
+        esp_http_client
+        mbedtls 
+        nvs_flash 
+        esp_psram
+        esp_wifi 
+        usb_host_msc
+        esp_driver_tsens
+        esp_driver_gpio
+        esp_driver_rmt
+        esp_hw_support
+        esp_pm
+        esp_timer
+        spi_flash
+        cjson
+        app_update
+        lwip
+        joltwallet__littlefs
+)

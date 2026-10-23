@@ -1,0 +1,29 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #0b1020;
+  color: #e5eaf5;
+  font: 15px/1.5 "Segoe UI", system-ui, sans-serif;
+}
+main { max-width: 520px; margin: 0 auto; padding: 34px 30px; }
+.eyebrow { color: #67e8f9; font-size: 11px; letter-spacing: .16em; font-weight: 700; }
+h1 { margin: 8px 0; font-size: 28px; }
+header p { margin: 0; color: #aab5ca; }
+.pairing {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #283754;
+  border-radius: 14px;
+  background: #111b30;
+  text-align: center;
+}
+.label { color: #aab5ca; font-size: 12px; }
+.code { margin: 3px 0 8px; color: #fff; font: 700 42px/1.3 ui-monospace, monospace; letter-spacing: .18em; }
+.addresses { color: #8dd9e8; font: 12px/1.7 ui-monospace, monospace; overflow-wrap: anywhere; }
+.status-card { display: flex; align-items: center; gap: 10px; margin-top: 16px; padding: 12px 14px; background: #111827; border-radius: 10px; }
+.indicator { width: 9px; height: 9px; flex: none; border-radius: 50%; background: #fbbf24; }
+.indicator.connected { background: #34d399; box-shadow: 0 0 12px #34d39988; }
+.indicator.error { background: #fb7185; }
+.notice { margin-top: 16px; padding: 14px; border-left: 3px solid #fbbf24; background: #211d16; color: #d6c9a5; font-size: 12px; }
+.notice strong { color: #fde68a; }
+footer { margin-top: 20px; color: #758198; font-size: 11px; text-align: center; }

@@ -1,0 +1,49 @@
+.dns-filtering-app-dark {
+  color-scheme: dark;
+  background-color: #101b1e !important;
+  color: #e3eeeb !important;
+}
+
+.dns-filtering-app-dark [class*="bg-white"] {
+  background-color: #172629 !important;
+}
+
+.dns-filtering-app-dark [class*="bg-emerald-50"] {
+  background-color: #12372d !important;
+}
+
+.dns-filtering-app-dark [class*="bg-rose-50"] {
+  background-color: #3a2025 !important;
+}
+
+.dns-filtering-app-dark [class*="bg-amber-50"] {
+  background-color: #3d321d !important;
+}
+
+.dns-filtering-app-dark [class*="text-emerald-"],
+.dns-filtering-app-dark [class*="text-rose-"],
+.dns-filtering-app-dark [class*="text-amber-"] {
+  filter: brightness(1.35);
+}
+
+.dns-filtering-app-dark [class*="border-[#"],
+.dns-filtering-app-dark [class*="divide-[#"] {
+  border-color: #33484b !important;
+}
+
+.dns-filtering-app-dark [class*="text-[#18343a"],
+.dns-filtering-app-dark [class*="text-[#62777b"],
+.dns-filtering-app-dark [class*="text-[#718487"] {
+  color: #c1d0ce !important;
+}
+
+.dns-filtering-app-dark input:not([type="checkbox"]),
+.dns-filtering-app-dark select {
+  border-color: #40595c !important;
+  background-color: #172629 !important;
+  color: #e3eeeb !important;
+}
+
+.dns-filtering-app-dark svg line {
+  stroke: #33484b;
+}
